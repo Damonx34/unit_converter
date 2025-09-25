@@ -1,13 +1,30 @@
-# main.py
+def convertir_distance(valeur, unite_source, unite_cible):
+    # Convertir la valeur en mètres
+    if unite_source == "m":
+        valeur_m = valeur
+    elif unite_source == "cm":
+        valeur_m = valeur / 100
+    elif unite_source == "km":
+        valeur_m = valeur * 1000
+    else:
+        return "Unité source inconnue"
 
-# Demande à l'utilisateur d'entrer des nombres séparés par des espaces
-numbers = input("Entrez des nombres séparés par des espaces : ")
 
-# Convertit la chaîne en liste de nombres
-numbers_list = [float(n) for n in numbers.split()]
+    if unite_cible == "m":
+        return valeur_m
+    elif unite_cible == "cm":
+        return valeur_m * 100
+    elif unite_cible == "km":
+        return valeur_m / 1000
+    else:
+        return "Unité cible inconnue"
 
-# Calcule la somme
-total = sum(numbers_list)
+valeur = float(input("Entrez la distance à convertir : "))
 
-# Affiche le résultat
-print("La somme des nombres est :", total)
+unite_source = input("Entrez l'unité source (m/cm/km) : ")
+
+unite_cible = input("Entrez l'unité cible (m/cm/km) : ")
+
+resultat = convertir_distance(valeur, unite_source, unite_cible)
+
+print("Résultat :", resultat, unite_cible)
